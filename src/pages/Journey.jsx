@@ -1,11 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Essential for React navigation
+// Remove useNavigate import
 import "./Journey.css";
 
-function Journey() {
-  const navigate = useNavigate();
-
-  // 1. Moving data to an array makes the code cleaner and easier to maintain
+// 1. Receive onNavigate as a prop from App.jsx
+function Journey({ onNavigate }) {
   const experienceData = [
     {
       company: "SanMar Corporation",
@@ -57,8 +55,12 @@ function Journey() {
         ))}
       </div>
 
-      {/* 2. Using navigate instead of id="backToSkills" */}
-      <button className="btn" onClick={() => navigate("/expertise")}>
+      {/* 2. Call the onNavigate prop instead of local navigate */}
+      <button
+        className="btn"
+        style={{ marginTop: "30px" }}
+        onClick={() => onNavigate("/expertise")}
+      >
         BACK TO SKILLS
       </button>
     </section>

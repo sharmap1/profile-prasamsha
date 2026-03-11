@@ -21,7 +21,12 @@ function App() {
   };
 
   const finalizeNavigation = (path) => {
-    navigate(path);
+    // Adding a tiny buffer prevents the "flicker" during the component swap
+    setTimeout(() => {
+      navigate(path);
+      // Force scroll to top so the new page doesn't start halfway down
+      window.scrollTo(0, 0);
+    }, 50);
   };
 
   return (

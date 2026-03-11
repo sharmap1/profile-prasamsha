@@ -1,10 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Essential for the buttons to work
+// Remove useNavigate import
 import "./Expertise.css";
 
-function Expertise() {
-  const navigate = useNavigate();
-
+// 1. Receive onNavigate as a prop from App.jsx
+function Expertise({ onNavigate }) {
   return (
     <section id="skills-page" className="page enter">
       <h2 className="hello-text">Technical Expertise</h2>
@@ -56,12 +55,9 @@ function Expertise() {
           </div>
         </div>
       </div>
-      {/* test */}
-
-      {/* test */}
 
       <div style={{ marginTop: "30px" }}>
-        {/* Back Button */}
+        {/* 2. Back Button calls onNavigate from App.jsx */}
         <button
           className="btn"
           style={{
@@ -70,13 +66,13 @@ function Expertise() {
             marginRight: "10px",
             boxShadow: "none",
           }}
-          onClick={() => navigate("/")}
+          onClick={() => onNavigate("/")}
         >
           BACK
         </button>
 
-        {/* Professional Journey Button */}
-        <button className="btn" onClick={() => navigate("/journey")}>
+        {/* 3. Journey Button calls onNavigate from App.jsx */}
+        <button className="btn" onClick={() => onNavigate("/journey")}>
           PROFESSIONAL JOURNEY
         </button>
       </div>

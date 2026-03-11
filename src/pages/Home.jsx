@@ -1,12 +1,11 @@
 import React from "react";
 import Tilt from "react-parallax-tilt";
-import { useNavigate } from "react-router-dom";
+// REMOVE useNavigate from here
 import "./Home.css";
 import praImage from "../assets/pra.jpg";
 
-function Home() {
-  const navigate = useNavigate();
-
+// DESTREUCTURE onNavigate from props
+function Home({ onNavigate }) {
   return (
     <section id="landing-page" className="page enter">
       <div className="hero-container">
@@ -18,7 +17,15 @@ function Home() {
             Deep expertise in validating SAP Commerce (Hybris) and Azure
             ecosystems.
           </p>
-          <button className="btn" onClick={() => navigate("/expertise")}>
+          {/* --- NEW: TOP 3 SKILLS PILLS --- */}
+          <div className="hero-skills-pills">
+            <span className="skill-pill">SAP Hybris</span>
+            <span className="skill-pill">Azure DevOps</span>
+            <span className="skill-pill">CI/CD Pipelines</span>
+          </div>
+
+          {/* This now calls the function in App.jsx which triggers the Loader */}
+          <button className="btn" onClick={() => onNavigate("/expertise")}>
             EXPLORE EXPERTISE
           </button>
         </div>
@@ -33,7 +40,6 @@ function Home() {
             className="parallax-effect"
           >
             <div className="image-card">
-              {/* Replace the src with your actual image path when ready */}
               <div className="image-placeholder">
                 <img
                   src={praImage}
@@ -42,7 +48,6 @@ function Home() {
                 />
               </div>
 
-              {/* DYNAMIC STATUS BADGE */}
               <div className="floating-status-badge">
                 <div className="pulse-dot"></div>
                 <span>8+ YEARS QA EXPERIENCE</span>

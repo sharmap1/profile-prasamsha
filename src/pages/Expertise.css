@@ -1,6 +1,6 @@
 /* Main Page Layout */
 #skills-page {
-  padding: 120px 5% 80px;
+  padding: 280px 5% 80px;
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   min-height: 100vh;
   display: flex;
@@ -86,20 +86,27 @@
 }
 
 .tag {
-  background: #f1f5f9;
+  background: rgba(241, 245, 249, 0.8); /* Soft slate-blue base */
   padding: 10px 18px;
   border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 600;
   color: #475569;
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
+  border: 1px solid rgba(186, 230, 253, 0.3); /* Subtle pastel border */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
 }
 
+/* Vibrant but Pastel Hover Effect */
 .tag:hover {
-  background: #38bdf8;
-  color: white;
-  transform: scale(1.08);
+  background: #e0f2fe; /* Lightest Sky Blue */
+  color: #0369a1;      /* Deep Ocean Blue for text contrast */
+  border-color: #38bdf8; /* Vibrant Sky Blue Border */
+  transform: translateY(-3px) scale(1.05); /* Slight lift and pop */
+  
+  /* Soft Pastel Glow */
+  box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.2), 
+              0 0 10px rgba(56, 189, 248, 0.1);
 }
 
 /* Navigation Buttons */
