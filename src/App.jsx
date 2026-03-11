@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useRef } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Expertise from "./pages/Expertise";
+import Journey from "./pages/Journey";
+import Loader from "./components/Loader";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const loaderRef = useRef();
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    // Check if loaderRef exists before calling start to prevent crashes
+    if (loaderRef.current) {
+      loaderRef.current.start(path);
+    } else {
+      navigate(path);
+    }
+  };
+
+  const finalizeNavigation = (path) => {
+    navigate(path);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app-container">
+      {/* 1. Loader sits at the top level */}
+      <Loader ref={loaderRef} onComplete={finalizeNavigation} />
+
+      {/* 2. Navbar MUST be here to be visible on all pages */}
+      <Navbar onNavigate={handleNavigation} />
+
+      {/* 3. Routes handle the changing page content */}
+      <main className="content-area">
+        <Routes>
+          <Route path="/" element={<Home onNavigate={handleNavigation} />} />
+          <Route
+            path="/expertise"
+            element={<Expertise onNavigate={handleNavigation} />}
+          />
+          <Route
+            path="/journey"
+            element={<Journey onNavigate={handleNavigation} />}
+          />
+        </Routes>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

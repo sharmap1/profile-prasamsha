@@ -1,0 +1,118 @@
+/* Container for the whole page */
+#exp-page {
+  padding: 100px 5% 50px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hello-text {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+}
+
+/* Scroll Container Styling */
+.exp-scroll-container {
+  width: 100%;
+  max-width: 800px;
+  height: 65vh;
+  overflow-y: auto;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Custom Scrollbar for Pastel Look */
+.exp-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+.exp-scroll-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.exp-scroll-container::-webkit-scrollbar-thumb {
+  background: #bae6fd;
+  border-radius: 10px;
+}
+
+/* Professional Journey Cards */
+.exp-card {
+  background: rgba(255, 255, 255, 0.7); /* Glass Effect */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.exp-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+  border-color: #7dd3fc;
+}
+
+/* Job Title & Meta */
+.exp-card h3 {
+  font-size: 1.4rem;
+  color: #0f172a;
+  margin-bottom: 5px;
+}
+
+.exp-meta {
+  color: #20769e; /* Your Accent Blue */
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* Bullet Points */
+.exp-card ul {
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.exp-card li {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.exp-card li::before {
+  content: "•";
+  color: #7dd3fc;
+  font-weight: bold;
+  position: absolute;
+  left: -15px;
+}
+
+/* Button Styling */
+.btn {
+  margin-top: 30px;
+  padding: 12px 35px;
+  border-radius: 50px;
+  border: none;
+  background: #20769e;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(32, 118, 158, 0.2);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background: #165a7a;
+  box-shadow: 0 6px 20px rgba(32, 118, 158, 0.3);
+}

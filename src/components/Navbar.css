@@ -1,0 +1,153 @@
+nav {
+  position: fixed;
+  top: 0;
+  width: 90%;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.nav-brand {
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #191e24;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-brand:hover {
+  transform: scale(1.02);
+  color: #20769e; /* Accent Blue */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-contact-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* HOVER EFFECT: Sliding Underline for Contact Links */
+.nav-contact-group a {
+  text-decoration: none;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-contact-group a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #20769e;
+  transition: width 0.3s ease;
+}
+
+.nav-contact-group a:hover {
+  color: #191e24;
+}
+
+.nav-contact-group a:hover::after {
+  width: 100%;
+}
+
+/* STATUS BADGE: Soft Pulse */
+.status-badge {
+  font-size: 0.8rem;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid rgba(3, 105, 161, 0.1);
+}
+
+/* HOVER EFFECT: Glow & Lift for Social Icons */
+.nav-contact-group a i.fa-brands {
+  font-size: 1.2rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-contact-group a:has(i.fa-brands):hover {
+  transform: translateY(-3px) scale(1.1);
+  color: #20769e;
+}
+
+.nav-contact-group a:has(i.fa-brands):hover::after {
+  width: 0; /* Remove underline for icons */
+}
+ /* UPGRADED STATUS BADGE: THE GLOW ISLAND */
+.status-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(224, 242, 254, 0.6); /* Translucent Pastel Blue */
+  color: #0369a1;
+  padding: 8px 18px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(3, 105, 161, 0.2);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(3, 105, 161, 0.1);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.status-badge:hover {
+  background: rgba(224, 242, 254, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(3, 105, 161, 0.2);
+}
+
+/* THE DYNAMIC PULSE DOT */
+.auth-dot {
+  height: 10px;
+  width: 10px;
+  background-color: #10b981; /* Vibrant Success Green */
+  border-radius: 50%;
+  position: relative;
+}
+
+/* The Breathing Halo Animation */
+.auth-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #10b981;
+  opacity: 0.7;
+  animation: status-pulse 2s infinite ease-out;
+}
+
+@keyframes status-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
