@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Expertise from "./pages/Expertise";
@@ -8,36 +8,51 @@ import Loader from "./components/Loader";
 import "./App.css";
 
 function App() {
-  const loaderRef = useRef();
   const navigate = useNavigate();
+  const location = useLocation();
+  const loaderRef = useRef();
 
+  // State to track where we want to go while the loader is playing
+  const [pendingPath, setPendingPath] = useState(null);
+
+  // 1. GITHUB PAGES REFRESH FIX
+  // Catches the redirect from 404.html and moves to the correct React route
+  useEffect(() => {
+    const query = window.location.search;
+    if (query && query.startsWith("?/")) {
+      const route = query.slice(2).replace(/~and~/g, "&");
+      navigate(route, { replace: true });
+    }
+  }, [navigate]);
+
+  // 2. TRIGGER LOADER ON NAVIGATION
   const handleNavigation = (path) => {
-    // Check if loaderRef exists before calling start to prevent crashes
+    if (path === location.pathname) return;
+
     if (loaderRef.current) {
-      loaderRef.current.start(path);
+      // Pass the path directly to the loader to avoid state lag
+      loaderRef.current.startLoading(path);
     } else {
       navigate(path);
     }
   };
-
+  // 3. FINALIZE NAVIGATION
+  // Receives the path back from the loader to navigate
   const finalizeNavigation = (path) => {
-    // Adding a tiny buffer prevents the "flicker" during the component swap
-    setTimeout(() => {
+    if (path) {
       navigate(path);
-      // Force scroll to top so the new page doesn't start halfway down
       window.scrollTo(0, 0);
-    }, 50);
+    }
   };
 
   return (
     <div className="app-container">
-      {/* 1. Loader sits at the top level */}
+      {/* Custom Loader Component */}
       <Loader ref={loaderRef} onComplete={finalizeNavigation} />
 
-      {/* 2. Navbar MUST be here to be visible on all pages */}
+      {/* Persistent Navbar */}
       <Navbar onNavigate={handleNavigation} />
 
-      {/* 3. Routes handle the changing page content */}
       <main className="content-area">
         <Routes>
           <Route path="/" element={<Home onNavigate={handleNavigation} />} />

@@ -2,37 +2,33 @@ import React, { useState, useImperativeHandle, forwardRef } from "react";
 import "./Loader.css";
 
 const Loader = forwardRef(({ onComplete }, ref) => {
-  const [width, setWidth] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
-  // This allows parent components to call loaderRef.current.start()
   useImperativeHandle(ref, () => ({
-    start: (toPath) => {
+    // Accept path here
+    startLoading(targetPath) {
       setIsVisible(true);
-      setWidth(0);
 
-      let currentWidth = 0;
-      const interval = setInterval(() => {
-        currentWidth += 10; // Smoother increments
-        setWidth(currentWidth);
+      // 1. Entry Animation (e.g., 600ms)
+      setTimeout(() => {
+        // 2. Change page exactly when the screen is covered
+        onComplete(targetPath);
 
-        if (currentWidth >= 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setIsVisible(false);
-            onComplete(toPath); // Navigates after bar hits 100%
-          }, 300);
-        }
-      }, 50);
+        // 3. Exit Animation
+        setTimeout(() => {
+          setIsVisible(false);
+        }, 500);
+      }, 600);
     },
   }));
 
   if (!isVisible) return null;
 
   return (
-    <div id="loader-overlay" className="loader-wrapper">
-      <div className="progress-container">
-        <div className="progress-bar" style={{ width: `${width}%` }}></div>
+    <div className="loader-overlay">
+      <div className="loader-content">
+        <div className="pastel-spinner"></div>
+        <p>Moving to next section...</p>
       </div>
     </div>
   );
