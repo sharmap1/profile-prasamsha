@@ -1,5 +1,6 @@
 /* Container for the whole page */
 #exp-page {
+  padding: 150px 5% 80px;
   background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
   min-height: 100vh;
   display: flex;
@@ -7,7 +8,6 @@
   align-items: center;
   justify-content: center;
   background-blend-mode: overlay;
-  padding: 0 8%;
   overflow: hidden;
 
 }
