@@ -24,7 +24,7 @@ function Journey({ onNavigate }) {
       ],
     },
     {
-      company: "Leapfrog Technology",
+      company: "Leapfrog Technology Inc",
       role: "Software QA Analyst",
       period: "2016 - 2020",
       bullets: [
@@ -114,7 +114,7 @@ function Journey({ onNavigate }) {
           <div className="training-grid-pills">
             {executiveTrainings.map((train, index) => (
               <div key={index} className="training-pill-item">
-                <span className="training-title">{train.title}</span>
+                <span className="training-title">{train.title}</span><br></br>
                 <span className="training-provider">{train.provider}</span>
               </div>
             ))}

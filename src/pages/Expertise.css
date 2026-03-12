@@ -1,11 +1,14 @@
 /* Main Page Layout */
 #skills-page {
-  padding: 280px 5% 80px;
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background-blend-mode: overlay;
+  padding: 0 8%;
+  overflow: hidden;
 }
 
 .hello-text {
