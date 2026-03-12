@@ -43,6 +43,7 @@ function Home({ onNavigate }) {
               <div className="image-placeholder">
                 <img
                   src={praImage}
+                  // src="../assets/pra.jpg"
                   alt="Prasamsha Profile"
                   className="main-profile-img"
                 />

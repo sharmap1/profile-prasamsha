@@ -192,3 +192,84 @@
     justify-content: center;
   }
 }
+/* /////// */
+.hello-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  font-weight: 900;
+  color: #1e293b;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+  
+  /* --- NEW TRANSFORM EFFECTS --- */
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: default;
+  display: inline-block; /* Required for transform to work perfectly */
+  transform-style: preserve-3d;
+}
+
+.hello-text:hover {
+  /* Lifts the text and tilts it slightly */
+  transform: translateY(-5px) rotateX(10deg) rotateY(-5px);
+  
+  /* Soft Pastel Text-Shadow Glow */
+  text-shadow: 
+    0 10px 20px rgba(32, 118, 158, 0.15),
+    0 0 15px rgba(186, 230, 253, 0.4);
+    
+  /* Subtle color shift to a deep pastel blue */
+  color: #20769e; 
+}
+.hello-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+  display: inline-block;
+
+  /* --- DYNAMIC COLOR TRANSFORMATION --- */
+  /* We use a 300% width gradient to allow for smooth sliding */
+  background: linear-gradient(
+    120deg, 
+    #1e293b 0%,    /* Deep Slate */
+    #20769e 25%,   /* Your Accent Blue */
+    #7dd3fc 50%,   /* Pastel Sky Blue */
+    #20769e 75%,   /* Back to Accent */
+    #1e293b 100%   /* Back to Slate */
+  );
+  background-size: 300% auto;
+  
+  /* Clips the background to the shape of the letters */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Infinite flowing animation */
+  animation: shimmer-text 8s linear infinite;
+  
+  /* Subtle 3D lift even without hover */
+  transform: perspective(1000px) rotateX(2deg);
+}
+
+/* The Animation Logic */
+@keyframes shimmer-text {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
+}
+
+/* Optional: Add a slight "float" movement to the whole header */
+.hello-text {
+  animation: shimmer-text 8s linear infinite, float-text 4s ease-in-out infinite;
+}
+
+@keyframes float-text {
+  0%, 100% { transform: translateY(0) rotateX(2deg); }
+  50% { transform: translateY(-8px) rotateX(2deg); }
+}

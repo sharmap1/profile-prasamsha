@@ -116,3 +116,188 @@
   background: #165a7a;
   box-shadow: 0 6px 20px rgba(32, 118, 158, 0.3);
 }
+/* Unified Education/Certificate Card Styling */
+.education-summary-card {
+  /* This inherits the glass effect from .exp-card automatically in your JSX */
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* Ensure the title inside the education card matches job titles */
+.education-summary-card h3 {
+  border-bottom: 2px solid rgba(125, 211, 252, 0.3);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  color: #0f172a;
+}
+
+/* Grid layout for degrees inside the card */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.edu-item h4 {
+  font-size: 1.1rem;
+  color: #1e293b;
+  margin-bottom: 5px;
+}
+
+/* Re-using your bullet styling for education details */
+.edu-bullets {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+/* Training Wrapper - Internal Divider */
+.training-wrapper {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.training-section-header {
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* Training Pills Styling */
+.training-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.training-list li {
+  background: rgba(32, 118, 158, 0.1); /* Light version of your accent blue */
+  color: #20769e;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(32, 118, 158, 0.2);
+  margin-bottom: 0; /* Override default li margin */
+}
+
+/* Remove the bullet dot from the training pills */
+.training-list li::before {
+  display: none;
+}
+.resume-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+/* Inherits glass and hover from .exp-card, but manages internal spacing */
+.resume-column {
+  margin-bottom: 0; /* Let the grid handle gaps */
+  height: 100%;
+}
+
+.column-title {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.edu-card-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.edu-icon {
+  font-size: 1.4rem;
+  background: rgba(32, 118, 158, 0.1);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.pill {
+  background: #20769e;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+/* Container for internal education entries */
+.edu-grid-internal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edu-entry {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.edu-entry:last-child {
+  border-bottom: none;
+}
+
+.edu-entry h4 {
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+/* Training Card Styling */
+.training-grid-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.training-pill-item {
+  background: rgba(32, 118, 158, 0.08);
+  border: 1px solid rgba(32, 118, 158, 0.15);
+  padding: 12px 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.training-pill-item:hover {
+  background: rgba(32, 118, 158, 0.15);
+  border-color: #20769e;
+}
+
+.training-title {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.training-provider {
+  font-size: 0.8rem;
+  color: #20769e;
+  font-weight: 500;
+}
+
+/* Unified Titles */
+.column-title {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
