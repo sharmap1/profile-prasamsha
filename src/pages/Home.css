@@ -1,12 +1,13 @@
 /* --- MAIN PAGE LAYOUT --- */
 #landing-page {
+   padding: 180px 5% 80px;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   background-blend-mode: overlay;
-  padding: 0 8%;
+  /* padding: 0 8%; */
   overflow: hidden;
 }
 
