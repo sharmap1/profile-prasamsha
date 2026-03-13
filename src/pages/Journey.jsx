@@ -43,9 +43,6 @@ function Journey({ onNavigate }) {
     {
       inst: "University of Washington | Seattle, WA",
       deg: "Full Stack Web Development",
-      // bullets: [
-      //   "Focus: HTML5, CSS3, JavaScript, ReactJS, Node.js, Express, MongoDB",
-      // ],
     },
     {
       inst: "Michigan State University | East Lansing, MI",
@@ -58,7 +55,7 @@ function Journey({ onNavigate }) {
       title: "Project Management Basics",
       provider: "Project Management Institute (PMI)",
     },
-    { title: "Giving & Reveiving Feedback", provider: "Harvard Manage Mentor" },
+    { title: "Giving & Receiving Feedback", provider: "Harvard Manage Mentor" },
     { title: "Essentials of Management", provider: "TeliaSonera" },
   ];
 
@@ -82,49 +79,54 @@ function Journey({ onNavigate }) {
           </div>
         ))}
 
-        {/* COMBINED CARD: Education & Certifications */}
+        {/* Education & Certifications Card */}
         <div className="exp-card education-combined-card">
-          <h3 className="column-title">Education & Certifications</h3>
+          <h3 className="section-title">
+            <i className="fa-solid fa-graduation-cap"></i> Education &
+            Certifications
+          </h3>
           <div className="edu-grid-internal">
             {educationData.map((edu, index) => (
-              <div key={index} className="edu-entry">
-                <h4>{edu.inst}</h4>
-                <p className="exp-meta">{edu.deg}</p>
-                {edu.bullets && (
-                  <div className="tech-pills">
-                    {edu.bullets[0]
-                      .replace("Focus: ", "")
-                      .split(", ")
-                      .map((tech, i) => (
-                        <span key={i} className="pill">
-                          {tech}
-                        </span>
-                      ))}
-                  </div>
-                )}
+              <div key={index} className="edu-entry-card">
+                <div className="edu-accent-line"></div>
+                <div className="edu-content">
+                  <h4>{edu.inst}</h4>
+                  <p className="edu-degree">{edu.deg}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* NEW CARD: Specialized Executive Training */}
-        <div className="exp-card training-card">
-          <h3 className="column-title">Specialized Executive Training</h3>
-          <br></br>
-          <div className="training-grid-pills">
+        {/* Specialized Executive Training Card */}
+        <div className="exp-card training-combined-card">
+          <h3 className="section-title">
+            <i className="fa-solid fa-award"></i> Executive Leadership Training
+          </h3>
+          <div className="training-flex-container">
             {executiveTrainings.map((train, index) => (
-              <div key={index} className="training-pill-item">
-                <span className="training-title">{train.title}</span><br></br>
-                <span className="training-provider">{train.provider}</span>
+              <div key={index} className="training-badge">
+                <div className="training-icon-box">
+                  <i className="fa-solid fa-check-circle"></i>
+                </div>
+                <div className="training-text">
+                  <span className="train-title">{train.title}</span>
+                  <span className="train-provider">{train.provider}</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <button className="btn" onClick={() => onNavigate("/expertise")}>
-        BACK TO SKILLS
-      </button>
+      <div className="journey-actions">
+        <button
+          className="btn btn-back"
+          onClick={() => onNavigate("/expertise")}
+        >
+          BACK TO SKILLS
+        </button>
+      </div>
     </section>
   );
 }

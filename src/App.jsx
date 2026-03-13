@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Expertise from "./pages/Expertise";
 import Journey from "./pages/Journey";
 import Loader from "./components/Loader";
+import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 
 function App() {
@@ -36,20 +37,25 @@ function App() {
       navigate(path);
     }
   };
-  // 3. FINALIZE NAVIGATION
-  // Receives the path back from the loader to navigate
   const finalizeNavigation = (path) => {
-    if (path) {
-      navigate(path);
-      window.scrollTo(0, 0);
-    }
-  };
+  if (path) {
+    navigate(path);
+    // Use a zero-timeout to push the scroll to the end of the execution queue
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant" // Instant is usually better for page jumps
+      });
+    }, 0);
+  }
+};
 
   return (
     <div className="app-container">
       {/* Custom Loader Component */}
       <Loader ref={loaderRef} onComplete={finalizeNavigation} />
-
+      <ScrollToTop />
       {/* Persistent Navbar */}
       <Navbar onNavigate={handleNavigation} />
 

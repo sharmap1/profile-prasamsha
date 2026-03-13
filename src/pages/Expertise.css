@@ -2,7 +2,6 @@
    1. MAIN PAGE LAYOUT
    ========================================== */
 #skills-page {
-  /* Reduced top padding for mobile, kept larger for desktop */
   padding: 120px 5% 60px; 
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   min-height: 100vh;
@@ -14,7 +13,7 @@
 }
 
 .hello-text {
-  font-size: 2.5rem; /* Slightly smaller for better fit */
+  font-size: 2.5rem;
   font-weight: 800;
   color: #1e293b;
   margin-bottom: 30px;
@@ -29,7 +28,7 @@
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(15px);
   border-radius: 30px;
-  padding: 40px 25px; /* Tighter padding for mobile */
+  padding: 40px 25px;
   max-width: 1200px;
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -39,13 +38,12 @@
 
 .skills-grid {
   display: grid;
-  /* Changed minmax to 280px so it doesn't overflow small screens */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
 /* ==========================================
-   3. SKILL CARDS
+   3. SKILL CARDS & TAGS
    ========================================== */
 .skill-category {
   background: #ffffff;
@@ -72,7 +70,6 @@
   align-items: center;
 }
 
-/* The line next to the title */
 .skill-category h3::after {
   content: "";
   flex: 1;
@@ -81,9 +78,6 @@
   margin-left: 10px;
 }
 
-/* ==========================================
-   4. TAGS & BUTTONS
-   ========================================== */
 .tag-container {
   display: flex;
   flex-wrap: wrap;
@@ -100,58 +94,102 @@
   border: 1px solid rgba(186, 230, 253, 0.3);
 }
 
+/* ==========================================
+   4. BUTTONS (COMPACT & TEXT-FIT)
+   ========================================== */
+.expertise-actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
 .btn {
-  padding: 14px 30px;
+  width: fit-content !important; /* Forces button to fit text content */
+  min-width: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
   border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  transition: 0.3s;
-  background: #0369a1;
-  color: white;
   border: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.btn-back {
+  background-color: #cbd5e1 !important; 
+  color: #475569 !important;
+  box-shadow: none !important;
+}
+
+.btn-journey {
+  background-color: #0369a1 !important;
+  color: white !important;
+  box-shadow: 0 10px 20px rgba(3, 105, 161, 0.15);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+
+.btn-journey:hover {
+  box-shadow: 0 15px 30px rgba(3, 105, 161, 0.25);
 }
 
 /* ==========================================
-   5. MOBILE RESPONSIVE QUERIES
+   5. UNIFIED RESPONSIVE QUERIES
    ========================================== */
+
+/* Tablet (768px) */
 @media (max-width: 768px) {
   #skills-page {
-    padding-top: 100px; /* Space for the navbar */
-    justify-content: flex-start; /* Stack from top on mobile */
+    padding-top: 100px;
+    justify-content: flex-start;
   }
-
   .hello-text {
     font-size: 1.8rem;
   }
-
   .skills-container-card {
     padding: 30px 20px;
-    border-radius: 20px;
-  }
-
-  /* Stack buttons on very small screens */
-  div[style*="marginTop"] {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 15px;
-    align-items: center;
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 300px;
-    margin-right: 0 !important; /* Remove the 10px margin from JSX */
   }
 }
 
+/* Mobile (600px) */
+@media (max-width: 600px) {
+  .expertise-actions {
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    min-width: 100px;
+  }
+}
+
+/* Tiny Screens (480px) */
 @media (max-width: 480px) {
   .skills-grid {
-    grid-template-columns: 1fr; /* Single column on phones */
+    grid-template-columns: 1fr;
   }
-  
   .skill-category h3 {
-    white-space: normal; /* Allow title to wrap if very long */
+    white-space: normal;
+  }
+  .expertise-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn {
+    width: 100% !important; /* Stacked buttons fill space on very small screens */
+    max-width: 280px;
   }
 }

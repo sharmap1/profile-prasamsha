@@ -41,3 +41,14 @@ body,
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+/* Ensure the main window handles the scroll */
+html, body {
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: visible; /* Avoid hidden/scroll on body if you want window.scrollTo to work */
+}
+
+.app-container, .content-area {
+  height: auto;
+  overflow: visible;
+}

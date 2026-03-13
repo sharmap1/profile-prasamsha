@@ -1,8 +1,6 @@
 import React from "react";
-// Remove useNavigate import
 import "./Expertise.css";
 
-// 1. Receive onNavigate as a prop from App.jsx
 function Expertise({ onNavigate }) {
   return (
     <section id="skills-page" className="page enter">
@@ -55,27 +53,36 @@ function Expertise({ onNavigate }) {
           </div>
         </div>
       </div>
-
-      <div style={{ marginTop: "30px" }}>
-        {/* 2. Back Button calls onNavigate from App.jsx */}
-        <button
-          className="btn"
-          style={{
-            background: "#cbd5e1",
-            color: "#475569",
-            marginRight: "10px",
-            boxShadow: "none",
-          }}
+      {/* BUTTON CONTAINER */}
+      <div className="expertise-actions">
+        <button 
+          className="btn btn-back" 
           onClick={() => onNavigate("/")}
         >
           BACK
         </button>
 
-        {/* 3. Journey Button calls onNavigate from App.jsx */}
-        <button className="btn" onClick={() => onNavigate("/journey")}>
+        <button
+          className="btn btn-journey"
+          onClick={() => onNavigate("/journey")}
+        >
           PROFESSIONAL JOURNEY
         </button>
       </div>
+
+      {/* RE-ORGANIZED BUTTONS: Clean and Responsive
+      <div className="expertise-actions">
+        <button className="btn btn-back" onClick={() => onNavigate("/")}>
+          BACK
+        </button>
+
+        <button
+          className="btn btn-journey"
+          onClick={() => onNavigate("/journey")}
+        >
+          PROFESSIONAL JOURNEY
+        </button>
+      </div> */}
     </section>
   );
 }
